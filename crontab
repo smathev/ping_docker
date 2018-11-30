@@ -1,2 +1,2 @@
-* * * * * /bin/sh /ping_script.sh
+*/15 * * * * /bin/sh /ping_script.sh
 # An empty line is required at the end of this file for a valid cron file.
