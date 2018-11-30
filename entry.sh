@@ -1,7 +1,6 @@
 #!/bin/sh
 
-sleep 20
-
+sleep 5
 # run a first ping
 /bin/sh /ping_script.sh
 
