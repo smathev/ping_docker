@@ -3,7 +3,6 @@ FROM alpine:latest
 RUN apk add --update grep apk-cron && rm -rf /var/cache/apk/*
 ADD crontab /crontab
 ADD ping_script.sh /ping_script.sh
-ADD ping_count.txt /config/ping_count.txt
 COPY entry.sh /entry.sh
 RUN chmod 755 /ping_script.sh /entry.sh
 RUN /usr/bin/crontab /crontab
