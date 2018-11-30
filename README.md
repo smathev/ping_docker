@@ -6,6 +6,7 @@ Instructions:
 Use this in a docker_composefile as a means to document whether a docker_network is working or not.
 
 The docker is used in the compose file like so:
+
 ping_docker:
   container_name: ping_docker
   image: smathev/ping_docker:latest
