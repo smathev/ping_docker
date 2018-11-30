@@ -9,5 +9,4 @@ RUN /usr/bin/crontab /crontab
 
 VOLUME /config
 
-CMD ["/ping_script.sh"]
 CMD ["/entry.sh"]
