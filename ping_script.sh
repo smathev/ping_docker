@@ -1,18 +1,16 @@
-#!/bin/sh
-host=www.google.com
+#!/bin/bash
 
-count=$(cat /config/ping_count.txt)
+host=http://www.google.com
 
-packet_loss=$(ping -c $count -q $host | grep -oP '\d+(?=% packet loss)')
-received_packets=$(( 100 - $packet_loss ))
+log_file=/config/log
+reaction_file=/config/working
 
-threshold=60
-
-rcd_pck=$received_packets
-
-if [ $rcd_pck -gt $threshold ]
+wget -q --tries=10 --timeout=20 --spider $host
+if [ $? -eq 0 ]; 
     then
-     echo "reply working - $(date +%F)" > /config/working.txt
- else
-     rm -rf /config/ping_working.txt
+        echo "connection UP - $(date)" > $log_file
+        touch $reaction_file
+else
+        echo "connection DOWN - $(date)" > $log_file
+        rm -rf $reaction_file
 fi
