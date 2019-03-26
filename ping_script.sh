@@ -2,9 +2,9 @@
 
 host=http://www.google.com
 
-log_file=log
-reaction_file=working
-ip_file=ip
+log_file=/config/log
+reaction_file=/config/working
+ip_file=/config/ip
 
 wget -q --tries=10 --timeout=20 --spider $host
 if [ $? -eq 0 ]; 
