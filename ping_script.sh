@@ -11,7 +11,7 @@ wget -qqO- 'https://duckduckgo.com/?q=what+is+my+ip' | grep -Pow 'Your IP addres
 }
 
 switchVpnConf () {
-find /home/core/.docker/configs/mullvad_vpn-client/mullvad_config_files/ -type f | shuf -n 1 | xargs cp  -t /home/core/.docker/configs/mullvad_vpn-client/act.Cert/vpn.conf
+find /mullvad_vpn-client/mullvad_config_files/ -type f | shuf -n 1 | xargs cp  -t /mullvad_vpn-client/act.Cert/vpn.conf
 }
 
 wget -q --tries=10 --timeout=20 --spider $host
