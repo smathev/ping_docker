@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --update grep apk-cron && rm -rf /var/cache/apk/*
+RUN apk add --update grep apk-cron speedtest-cli python && rm -rf /var/cache/apk/*
 ADD crontab /crontab
 ADD ping_script.sh /ping_script.sh
 COPY entry.sh /entry.sh
