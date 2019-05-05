@@ -1,4 +1,4 @@
 */10 * * * * /bin/sh /config/ping_script.sh
-5 */1 * * * /usr/bin/speedtest-cli > /config/speedtest.csv
+5 */1 * * * /usr/bin/speedtest-cli --csv > /config/speedtest.csv
 10 */1 * * * /bin/sh /config/speedtest_output.sh
 # An empty line is required at the end of this file for a valid cron file.

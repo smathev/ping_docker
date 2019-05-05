@@ -13,3 +13,5 @@ ULspeed=$((ULspeed / divideBy))" MB/S UL"
 printf "%3s " $DLspeed  
 printf "\n"
 printf "%3s " $ULspeed 
+printf "\n"
+
