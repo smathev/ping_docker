@@ -20,25 +20,28 @@ for file in ${speedTestFiles[@]}
 do
     time=$(date +"%T")
     speedtest-cli --csv > $file
-     
+    printEnd=1
     getDLSpeed=$(awk -F "\"*,\"*" '{print $7}' $file | cut -d. -f1 )
     getULSpeed=$(awk -F "\"*,\"*" '{print $8}' $file | cut -d. -f1)
     DLspeedToMBs=$((getDLSpeed / divideBy))
     ULspeedToMBs=$((getULSpeed / divideBy))
-    formatDLspeed="$DLspeedToMBs DL "
-    formatULspeed="$ULspeedToMBs UL "
+    formatDLspeed="$DLspeedToMBs DL"
+    formatULspeed="$ULspeedToMBs UL"
 
     output="$formatDLspeed $formatULspeed"
-    echo -e "$time"
-    echo -e $output "MB/s" | column
-    if [ $DLspeedToMBs -gt 28 ]; then
+    printf '|%12s|\n' "$time"
+    printf '|%12s|\n' "$formatDLspeed MB/s"  "$formatULspeed MB/s"
+    if [ $DLspeedToMBs -gt 23 ]; then
         break
+    else
+        printf '**'
+        printf '\n'
+        printEnd=0
     fi
 done
-
-echo "#################"
-
-#printf "\n"
-#printf "%3s " $dt
-#printf "\n"
+if [ $printEnd -gt 0 ]; then
+    printf '\n'
+    printf "#################"
+    printf '\n'
+fi
 
